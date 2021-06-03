@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFFE5E5E5),
+        backgroundColor: Color(0xFFd5def0),
         body: Column(
           children: [
             const SizedBox(
@@ -202,7 +202,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: SizedBox(
                       height: 40,
                       child: ColoredBox(
-                        color: _isGoEnabled ? Color(0xFF000000) : Color(0x61000000),
+                        color: _isGoEnabled ? Color(0xDD000000) : Color(0x61000000),
                         child: Center(
                           child: Text(
                             'Go'.toUpperCase(),

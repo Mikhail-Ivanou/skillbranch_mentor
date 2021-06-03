@@ -3,123 +3,142 @@ import 'package:flutter_fight_club/main.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  // group('l01h01', () {
-  //   testWidgets('Scaffold have right background color', (WidgetTester tester) async {
-  //     await tester.pumpWidget(MyApp());
-  //     expect(
-  //       (tester.firstWidget(find.byType(Scaffold)) as Scaffold).backgroundColor,
-  //       const Color(0xFF282E3D),
-  //     );
-  //   });
-  // });
-  //
-  // group("l01h02", () {
-  //   testWidgets('Top Text widget has correct style', (WidgetTester tester) async {
-  //     const TextStyle correctStyle = const TextStyle(fontSize: 38, fontWeight: FontWeight.w900, color: Colors.white);
-  //     await tester.pumpWidget(MyApp());
-  //     expect((tester.firstWidget(find.textContaining("Test your")) as Text).style, correctStyle);
-  //     expect((tester.firstWidget(find.textContaining("Test your")) as Text).textAlign, TextAlign.center);
-  //   });
-  // });
-  //
-  // group('l01h03', () {
-  //   testWidgets('Centered box has right background color', (WidgetTester tester) async {
-  //     await tester.pumpWidget(MyApp());
-  //     final List<Stack> stackWidgets =
-  //         tester.widgetList<Stack>(find.byWidgetPredicate((widget) => widget is Stack)).toList();
-  //     final Stack? stackWithThreeWidgets = stackWidgets.firstWhere((stack) => stack.children.length == 3);
-  //     expect(stackWithThreeWidgets, isNotNull);
-  //     final Widget? centeredWidget = stackWithThreeWidgets!.children
-  //         .firstWhere((element) => (element is Align && element.alignment == Alignment.center) || element is Center);
-  //     expect(centeredWidget, isNotNull);
-  //     expect(centeredWidget, isInstanceOf<Align>());
-  //     expect((centeredWidget as Align).child, isInstanceOf<ColoredBox>());
-  //     final ColoredBox coloredBox = centeredWidget.child as ColoredBox;
-  //     expect(coloredBox.color, const Color(0xFF6D6D6D));
-  //   });
-  // });
-  //
-  // group('l01h04', () {
-  //   testWidgets('The Text with milliseconds has correct style', (WidgetTester tester) async {
-  //     const TextStyle correctStyle = const TextStyle(fontSize: 36, fontWeight: FontWeight.w500, color: Colors.white);
-  //     await tester.pumpWidget(MyApp());
-  //     final Text? text = tester.firstWidget(find.byWidgetPredicate((widget) => widget is Text && widget.data == ""));
-  //     expect(text, isNotNull);
-  //     expect(text!.style, correctStyle);
-  //   });
-  // });
-  //
-  // group('l01h05', () {
-  //   testWidgets('The Text with milliseconds has correct style', (WidgetTester tester) async {
-  //     const TextStyle correctStyle = const TextStyle(fontSize: 38, fontWeight: FontWeight.w900, color: Colors.white);
-  //     await tester.pumpWidget(MyApp());
-  //     final Text? text =
-  //         tester.firstWidget(find.byWidgetPredicate((widget) => widget is Text && widget.data == "START"));
-  //     expect(text, isNotNull);
-  //     expect(text!.style, correctStyle);
-  //   });
-  // });
-  //
-  // group('l01h06', () {
-  //   testWidgets('Top and Bottom widget have 10% padding from the edges of the screen', (WidgetTester tester) async {
-  //     await tester.pumpWidget(MyApp());
-  //     final List<Stack> stackWidgets =
-  //         tester.widgetList<Stack>(find.byWidgetPredicate((widget) => widget is Stack)).toList();
-  //     final Stack? stackWithThreeWidgets = stackWidgets.firstWhere((stack) => stack.children.length == 3);
-  //     expect(stackWithThreeWidgets, isNotNull);
-  //     final Widget? topWidget = stackWithThreeWidgets!.children
-  //         .firstWhere((element) => element is Align && element.alignment == const Alignment(0, -0.8));
-  //     expect(topWidget, isNotNull);
-  //     final Widget? bottomWidget = stackWithThreeWidgets.children
-  //         .firstWhere((element) => element is Align && element.alignment == const Alignment(0, 0.8));
-  //     expect(bottomWidget, isNotNull);
-  //   });
-  // });
-  //
-  // group('l01h07', () {
-  //   testWidgets('Bottom button has correct colors for all GameStates', (WidgetTester tester) async {
-  //     await tester.runAsync(() async {
-  //       await tester.pumpWidget(TickerMode(child: MyApp(), enabled: true));
-  //
-  //       expect(find.text('START'), findsOneWidget);
-  //       expect(find.text('WAIT'), findsNothing);
-  //       expect(find.text('STOP'), findsNothing);
-  //       expect(
-  //         (tester.firstWidget(find.widgetWithText(ColoredBox, "START")) as ColoredBox).color,
-  //         const Color(0xFF40CA88),
-  //       );
-  //
-  //       await tester.tap(find.text("START"));
-  //       await tester.pump();
-  //
-  //       expect(find.text('START'), findsNothing);
-  //       expect(find.text('WAIT'), findsOneWidget);
-  //       expect(find.text('STOP'), findsNothing);
-  //
-  //       expect(
-  //         (tester.firstWidget(find.widgetWithText(ColoredBox, "WAIT")) as ColoredBox).color,
-  //         const Color(0xFFE0982D),
-  //       );
-  //
-  //       await Future.delayed(Duration(milliseconds: 5001));
-  //       await tester.pump();
-  //
-  //       expect(find.text('START'), findsNothing);
-  //       expect(find.text('WAIT'), findsNothing);
-  //       expect(find.text('STOP'), findsOneWidget);
-  //
-  //       expect(
-  //         (tester.firstWidget(find.widgetWithText(ColoredBox, "STOP")) as ColoredBox).color,
-  //         const Color(0xFFE02D47),
-  //       );
-  //
-  //       await tester.tap(find.text("STOP"));
-  //       await tester.pump();
-  //
-  //       expect(find.text('START'), findsOneWidget);
-  //       expect(find.text('WAIT'), findsNothing);
-  //       expect(find.text('STOP'), findsNothing);
-  //     });
-  //   });
-  // });
+  group('l02h01', () {
+    testWidgets('Scaffold have right background color', (WidgetTester tester) async {
+      await tester.pumpWidget(MyApp());
+      expect(
+        (tester.firstWidget(find.byType(Scaffold)) as Scaffold).backgroundColor,
+        const Color.fromRGBO(213, 222, 240, 1),
+      );
+    });
+  });
+
+  group("l02h02", () {
+    testWidgets('Buttons with BodyParts have right background in unselected state',
+        (WidgetTester tester) async {
+      const Color correctBackgroundColor = Colors.black38;
+      await tester.pumpWidget(MyApp());
+      final List<ColoredBox> widgetsWithButtons = [
+        ...tester.widgetList(find.widgetWithText(ColoredBox, "HEAD")),
+        ...tester.widgetList(find.widgetWithText(ColoredBox, "TORSO")),
+        ...tester.widgetList(find.widgetWithText(ColoredBox, "LEGS")),
+      ].cast<ColoredBox>().toList();
+      expect(widgetsWithButtons, isNotEmpty);
+      expect(widgetsWithButtons.every((coloredBox) => coloredBox.color == correctBackgroundColor),
+          true);
+    });
+  });
+
+  group("l02h03", () {
+    testWidgets(
+        'Tap on GO button clears selected attackingBodyPart and defendingBodyPart only when'
+        ' selected both of them', (WidgetTester tester) async {
+      await tester.pumpWidget(MyApp());
+      final GestureDetector goButton = tester.widget(find.widgetWithText(GestureDetector, "GO"));
+      expect(goButton, isNotNull);
+      final List<GestureDetector> widgetsWithBodyParts =
+          tester.widgetList<GestureDetector>(find.widgetWithText(GestureDetector, "HEAD")).toList();
+      expect(widgetsWithBodyParts.length, 2);
+
+      const Color selectedButtonColor = Color.fromRGBO(28, 121, 206, 1);
+      final Color unselectedButtonColor =
+          tester.widget<ColoredBox>(find.widgetWithText(ColoredBox, "HEAD").first).color;
+
+      await tester.tap(find.widgetWithText(GestureDetector, "HEAD").first);
+      await tester.pump();
+
+      expect(
+        tester.widget<ColoredBox>(find.widgetWithText(ColoredBox, "HEAD").first).color,
+        selectedButtonColor,
+      );
+      expect(
+        tester.widget<ColoredBox>(find.widgetWithText(ColoredBox, "HEAD").last).color,
+        unselectedButtonColor,
+      );
+
+      await tester.tap(find.widgetWithText(GestureDetector, "GO"));
+      await tester.pump();
+
+      expect(
+        tester.widget<ColoredBox>(find.widgetWithText(ColoredBox, "HEAD").first).color,
+        selectedButtonColor,
+      );
+      expect(
+        tester.widget<ColoredBox>(find.widgetWithText(ColoredBox, "HEAD").last).color,
+        unselectedButtonColor,
+      );
+
+      await tester.tap(find.widgetWithText(GestureDetector, "HEAD").last);
+      await tester.pump();
+
+      expect(
+        tester.widget<ColoredBox>(find.widgetWithText(ColoredBox, "HEAD").first).color,
+        selectedButtonColor,
+      );
+      expect(
+        tester.widget<ColoredBox>(find.widgetWithText(ColoredBox, "HEAD").last).color,
+        selectedButtonColor,
+      );
+
+      await tester.tap(find.widgetWithText(GestureDetector, "GO"));
+      await tester.pump();
+
+      expect(
+        tester.widget<ColoredBox>(find.widgetWithText(ColoredBox, "HEAD").first).color,
+        unselectedButtonColor,
+      );
+      expect(
+        tester.widget<ColoredBox>(find.widgetWithText(ColoredBox, "HEAD").last).color,
+        unselectedButtonColor,
+      );
+    });
+  });
+
+  group('l01h04', () {
+    testWidgets(
+        'GO button changes its background if either attacking or defending body parts'
+        ' is not selected', (WidgetTester tester) async {
+      await tester.pumpWidget(MyApp());
+
+      final GestureDetector goButton = tester.widget(find.widgetWithText(GestureDetector, "GO"));
+      expect(goButton, isNotNull);
+
+      final List<GestureDetector> widgetsWithBodyParts =
+          tester.widgetList<GestureDetector>(find.widgetWithText(GestureDetector, "HEAD")).toList();
+      expect(widgetsWithBodyParts.length, 2);
+
+      const Color unselectedButtonColor = Colors.black38;
+      const Color selectedGoButtonColor = Colors.black87;
+
+      expect(
+        tester.widget<ColoredBox>(find.widgetWithText(ColoredBox, "GO")).color,
+        unselectedButtonColor,
+      );
+
+      await tester.tap(find.widgetWithText(GestureDetector, "HEAD").first);
+      await tester.pump();
+
+      expect(
+        tester.widget<ColoredBox>(find.widgetWithText(ColoredBox, "GO")).color,
+        unselectedButtonColor,
+      );
+
+      await tester.tap(find.widgetWithText(GestureDetector, "HEAD").last);
+      await tester.pump();
+
+      expect(
+        tester.widget<ColoredBox>(find.widgetWithText(ColoredBox, "GO")).color,
+        selectedGoButtonColor,
+      );
+    });
+  });
+
+  group('l01h05', () {
+    testWidgets('There are 5 ones below You and Enemy', (WidgetTester tester) async {
+      await tester.pumpWidget(MyApp());
+
+      final List<Text> widgetsWithLegs = tester.widgetList<Text>(find.text("1")).toList();
+      expect(widgetsWithLegs.length, 10);
+    });
+  });
 }
