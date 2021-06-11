@@ -38,13 +38,13 @@ class MyHomePageState extends State<MyHomePage> {
   BodyPart? defendingBodyPart;
   BodyPart? attackingBodyPart;
 
-  BodyPart? whatEnemyAttacksBodyPart = BodyPart.random();
-  BodyPart? whatEnemyDefendsBodyPart = BodyPart.random();
+  BodyPart whatEnemyAttacks = BodyPart.random();
+  BodyPart whatEnemyDefends = BodyPart.random();
 
   String? actionResult;
 
   int yourLives = maxLives;
-  int enemyLives = maxLives;
+  int enemysLives = maxLives;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class MyHomePageState extends State<MyHomePage> {
             FightersInfo(
               maxLives: maxLives,
               yourLives: yourLives,
-              enemyLives: enemyLives,
+              enemyLives: enemysLives,
             ),
             Expanded(
               child: Padding(
@@ -112,7 +112,7 @@ class MyHomePageState extends State<MyHomePage> {
 
   bool get _isGoEnabled => defendingBodyPart != null && attackingBodyPart != null;
 
-  bool get _isGameOver => yourLives == 0 || enemyLives == 0;
+  bool get _isGameOver => yourLives == 0 || enemysLives == 0;
 
   void _selectDefendingBodyPart(final BodyPart value) {
     if (_isGameOver) {
@@ -135,17 +135,17 @@ class MyHomePageState extends State<MyHomePage> {
   void processGo() {
     setState(() {
       if (_isGameOver) {
-        enemyLives = maxLives;
+        enemysLives = maxLives;
         yourLives = maxLives;
         actionResult = null;
         return;
       }
       if (_isGoEnabled) {
-        final bool enemyLoseLife = attackingBodyPart != whatEnemyDefendsBodyPart;
-        final bool youLoseLife = defendingBodyPart != whatEnemyAttacksBodyPart;
+        final bool enemyLoseLife = attackingBodyPart != whatEnemyDefends;
+        final bool youLoseLife = defendingBodyPart != whatEnemyAttacks;
 
         if (enemyLoseLife) {
-          enemyLives--;
+          enemysLives--;
         }
 
         if (youLoseLife) {
@@ -156,32 +156,32 @@ class MyHomePageState extends State<MyHomePage> {
 
         attackingBodyPart = null;
         defendingBodyPart = null;
-        whatEnemyAttacksBodyPart = BodyPart.random();
-        whatEnemyDefendsBodyPart = BodyPart.random();
+        whatEnemyAttacks = BodyPart.random();
+        whatEnemyDefends = BodyPart.random();
       }
     });
   }
 
   void checkResult() {
-    if (enemyLives == 0 && yourLives != 0) {
+    if (enemysLives == 0 && yourLives != 0) {
       actionResult = ActionResult.won.name;
       return;
     }
-    if (enemyLives == 0 && yourLives == 0) {
+    if (enemysLives == 0 && yourLives == 0) {
       actionResult = ActionResult.draw.name;
       return;
     }
-    if (enemyLives != 0 && yourLives == 0) {
+    if (enemysLives != 0 && yourLives == 0) {
       actionResult = ActionResult.lost.name;
       return;
     }
 
-    final firstLine = attackingBodyPart == whatEnemyDefendsBodyPart
+    final firstLine = attackingBodyPart == whatEnemyDefends
         ? ActionResult.youBlocked.name
         : '${ActionResult.youHit.name}${attackingBodyPart?.name.toLowerCase()}.';
-    final secondLine = defendingBodyPart == whatEnemyAttacksBodyPart
+    final secondLine = defendingBodyPart == whatEnemyAttacks
         ? ActionResult.enemyBlocked.name
-        : '${ActionResult.enemyHit.name}${whatEnemyAttacksBodyPart?.name.toLowerCase()}.';
+        : '${ActionResult.enemyHit.name}${whatEnemyAttacks.name.toLowerCase()}.';
     actionResult = '$firstLine\n$secondLine';
   }
 }
@@ -344,8 +344,8 @@ class ActionResult {
   static const lost = ActionResult._('You lost');
   static const draw = ActionResult._('Draw');
   static const youBlocked = ActionResult._('Your attack was blocked.');
-  static const youHit = ActionResult._('You hit enemy’s ');
-  static const enemyBlocked = ActionResult._('Enemy’s attack was blocked.');
+  static const youHit = ActionResult._("You hit enemy's ");
+  static const enemyBlocked = ActionResult._("Enemy's attack was blocked.");
   static const enemyHit = ActionResult._('Enemy hit your ');
 
   @override
