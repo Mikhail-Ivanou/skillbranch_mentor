@@ -10,6 +10,9 @@ class FightClubColors {
   static const darkGreyText = Color(0xFF161616);
   static const whiteText = Color(0xDEFFFFFF);
 
-  static const green = Color(0xFF4DC839);
   static const darkBG = Color(0xFFC5D1EA);
+
+  static const green = Color(0xFF038800);
+  static const red = Color(0xFFEA2C2C);
+  static const blue = Color(0xFF1C79CE);
 }
